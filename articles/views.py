@@ -20,11 +20,9 @@ def index(request):
 def price(request):
     pricemodel = ByudjetModel.objects.all()
     priceplan = ByudjetPlan.objects.all()
-    # faq_model = FAQModel.objects.all()
     context = {
         'pricemodel': pricemodel,
         'priceplan': priceplan,
-        # 'faq_model': faq_model
     }
     return render(request, 'pricing.html', context)
 
@@ -71,9 +69,9 @@ def service(request):
 
 def price_plan(request, pk):
     pricemodel = ByudjetModel.objects.get(id=pk)
-    plan = ByudjetPlan.objects.filter(id=pricemodel.id)
+    plans = ByudjetPlan.objects.filter(titleTwo_id=pk)
     context = {
-        'plan': plan,
+        'plans': plans,
         'pricemodel': pricemodel,
     }
     return render(request, 'price_plan.html', context)
@@ -81,10 +79,12 @@ def price_plan(request, pk):
 
 def contact(request):
     if request.method == 'POST':
-        aloqa =Contact(name=request.POST['name'], email=request.POST['email'], subject=request.POST['subject'], message=request.POST['message'])
+        aloqa = Contact(name=request.POST['name'], email=request.POST['email'], subject=request.POST['subject'],
+                        message=request.POST['message'])
         aloqa.save()
         return redirect('home')
     return render(request, 'contact.html')
+
 
 def yangilik(request):
     db_news = YangilikModel.objects.all()

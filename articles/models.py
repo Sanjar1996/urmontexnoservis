@@ -41,19 +41,21 @@ class HomeVideo(models.Model):
 
 
 class ByudjetModel(models.Model):
-    title = models.CharField(max_length=50)
+    titleOne = models.CharField(max_length=50)
+
 
     def __str__(self):
-        return self.title
+        return f"{self.id} - {self.titleOne}"
 
 
 class ByudjetPlan(models.Model):
-    title = models.OneToOneField(ByudjetModel, on_delete=models.CASCADE, null=False)
+    titleTwo = models.ForeignKey(ByudjetModel, on_delete=models.CASCADE)
     plan = models.CharField(max_length=75)
     file = models.FileField(blank=True)
 
+
     def __str__(self):
-        return self.plan
+        return f"{self.id} - {self.plan} | {self.titleTwo.id}"
 
 
 class QuestionModel(models.CharField):

@@ -25,17 +25,18 @@
       <div class="container">
 
         <div class="row">
-            {% for data in plan %}
-          <div class="col-lg-3 col-md-6 {% if fotloop.first %}mt-4 mt-md-0{% endif %}">
-            <div class="box">
-              <h3>{{ data.plan }}</h3>
-              <h4><span> Hisobot</span></h4>
-              <div class="btn-wrap">
-                <a href="{% if data.file %}{{ data.file.url }}{% endif %}" class="btn-buy">Ko'rish</a>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
+        <center><h3>Byudjet toʼgʼrisidagi qonunchilik hujjatlariga muvofiq ochiq maʼlumotlar</h3></center>
+            {% for data in plans %}
+                  <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+                    <div class="box">
+                      <h3>{{ data.plan }}</h3>
+                      <h4><span> Hisobot</span></h4>
+                      <div class="btn-wrap">
+                        <a href="{% if data.file %}{{ data.file.url }}{% endif %}" class="btn-buy">Ko'rish</a>
+                      </div>
+                    </div>
+                  </div>
+            {% endfor %}
         </div>
 
       </div>

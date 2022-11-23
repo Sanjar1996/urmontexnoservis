@@ -115,7 +115,7 @@ class YangilikModel(models.Model):
     date = models.DateField(auto_now_add=False)
     title = models.CharField(max_length=150)
     descriptions = models.CharField(max_length=150)
-    body = RichTextField()
+    body = models.TextField()
     image = models.ImageField(upload_to='images/')
 
     def __str__(self):

@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  urmontexdb:
+    container_name: urmontexdb
+    image: postgres
+    environment:
+      POSTGRES_DB: db_urmontex
+      POSTGRES_USER: urmontexuser
+      POSTGRES_PASSWORD: urmontexpass
+    volumes:
+      - postgres_data:/var/lib/postgresql/dataurmontex/
+    ports:
+      - "5432:5432"
+  urmontexweb:
+    container_name: urmontex
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - urmontexdb
+    env_file:
+      - ./.env.dev
+
+volumes:
+  postgres_data:

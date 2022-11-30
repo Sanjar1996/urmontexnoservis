@@ -2,8 +2,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -13,8 +13,9 @@ SECRET_KEY = 'django-insecure-2jh9!1ja8dz8en+kpk91c3q_(&576wi3=39$y$3%sqkv)k0g=v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["www.uts-servis.uz", 'uts-servis.uz', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://*uts-servis.uz']
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ["www.uts-servis.uz", 'uts-servis.uz', '127.0.0.1']
+# CSRF_TRUSTED_ORIGINS = ['https://*uts-servis.uz']
 # Application definition
 
 INSTALLED_APPS = [
